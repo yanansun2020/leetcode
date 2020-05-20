@@ -9,14 +9,25 @@ class Solution:
             return 0
         leftPath = self.getPath(root.left)
         rightPath = self.getPath(root.right)
-        left_arrow = right_arrow = 0
-        if root.left and root.left.val == root.val:
-            left_arrow = 1 + leftPath
-        if root.right and root.right.val == root.val:
-            right_arrow = 1 + rightPath
+        #left_arrow = right_arrow = 0
+        if root.left:
+            if root.left.val == root.val:
+                leftPath = 1 + leftPath
+            else:
+                leftPath = 0
+        if root.right:
+            if root.right.val == root.val:
+                rightPath = 1 + rightPath
+            else:
+                rightPath = 0
         # return leftPath + rightPath
-        self.ans = max(self.ans, right_arrow + left_arrow)
-        return max(left_arrow, right_arrow)
+        #if root.left and root.right and root.val == root.left.val and root.val == root.right.val:
+        self.ans = max(self.ans, rightPath + leftPath)
+        # else:
+        #     maxV = max(rightPath, leftPath)
+        #     self.ans = max( self.ans, maxV)
+        return max(rightPath, leftPath)
+
 
 def main():
     sol = Solution()
