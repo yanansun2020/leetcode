@@ -27,13 +27,6 @@ class Solution:
             if root.val == root.right.val:
                 self.getResult(root.right)
 
-
-
-
-
-
-
-
 def main():
     sol = Solution()
     root = TreeNode(2, TreeNode(2, None, None), TreeNode(5, TreeNode(5, None, None), TreeNode(7, None, None)))
