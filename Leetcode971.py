@@ -5,12 +5,7 @@ class Solution:
     voyage = []
     def flipMatchVoyage(self, root: TreeNode, voyage: List[int]) -> List[int]:
         self.result = []
-        curValue = voyage[0]
         self.voyage = voyage
-        if root.val != curValue:
-            result = []
-            result.append(-1)
-            return result
         self.flipMatch(root)
         return self.result
 
