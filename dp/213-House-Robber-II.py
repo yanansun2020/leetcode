@@ -1,3 +1,5 @@
+# Since House[1] and House[n] are adjacent, they cannot be robbed together.
+# Therefore, the problem becomes to rob either House[1]-House[n-1] or House[2]-House[n]
 from typing import List
 class Solution:
     def rob(self, nums: List[int]) -> int:
