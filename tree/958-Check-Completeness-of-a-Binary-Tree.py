@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# width = nodes.length
 from TreeNode import TreeNode
 class Solution:
     def isCompleteTree(self, root: TreeNode) -> bool:
