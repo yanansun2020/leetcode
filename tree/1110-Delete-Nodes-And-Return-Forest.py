@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# 左右根
 from TreeNode import TreeNode
 from typing import List
 class Solution:
