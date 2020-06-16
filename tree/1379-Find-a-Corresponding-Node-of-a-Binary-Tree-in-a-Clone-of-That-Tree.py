@@ -11,12 +11,13 @@ class Solution:
             return None
         if original.val == target.val:
             return cloned
-        left = self.getTargetCopy(original.left, cloned.left, target)
-        if not left:
-            right = self.getTargetCopy(original.right, cloned.right, target)
-            return right if right else None
-        else:
-            return left
+        return self.getTargetCopy(original.left, cloned.left, target) or\
+             self.getTargetCopy(original.right, cloned.right, target)
+        # self.getTargetCopy(original.left, cloned.left, target)
+        # self.getTargetCopy(original.right, cloned.right, target)
+        # if original.val == target.val:
+        #     return cloned
+
 def main():
     sol = Solution()
     left = TreeNode(2, TreeNode(4), TreeNode(5))

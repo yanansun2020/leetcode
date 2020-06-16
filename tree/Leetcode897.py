@@ -6,18 +6,52 @@
 #         self.right = right
 from TreeNode import TreeNode
 class Solution:
+    # def increasingBST(self, root):
+    #     def inorder(node):
+    #         if node:
+    #             yield from inorder(node.left)
+    #             yield node.val
+    #             yield from inorder(node.right)
+    #     ans = cur = TreeNode(None)
+    #     nodes = inorder(root)
+    #     for v in nodes:
+    #         cur.right = TreeNode(v)
+    #         cur = cur.right
+    #     return ans.right
+    header = None
+    curNode = None
     def increasingBST(self, root):
-        def inorder(node):
-            if node:
-                yield from inorder(node.left)
-                yield node.val
-                yield from inorder(node.right)
-        ans = cur = TreeNode(None)
-        nodes = inorder(root)
-        for v in nodes:
-            cur.right = TreeNode(v)
-            cur = cur.right
-        return ans.right
+        self.header = self.curNode = TreeNode(None)
+        self.increasingBST_helper(root)
+        return self.header.right
+
+    def increasingBST_helper(self, root):
+        if not root:
+            return None
+        self.increasingBST_helper(root.left)
+        if not self.curNode:
+            self.curNode = self.header = TreeNode(root.val)
+        else:
+            self.curNode.right = TreeNode(root.val)
+            self.curNode = self.curNode.right
+        self.increasingBST_helper(root.right)
+
+
+    # def increasingBST_1(self, root):
+    #     self.node = self.ret = None
+    #     self.inorder(root)
+    #     return self.ret
+
+    # def inorder(self, node):
+    #     if not node:
+    #         return None
+    #     self.inorder(node.left)
+    #     if not self.ret:
+    #         self.ret = self.node = TreeNode(node.val)
+    #     else:
+    #         self.node.right = TreeNode(node.val)
+    #         self.node = self.node.right
+    #     self.inorder(node.right)
 
 
 def main():
