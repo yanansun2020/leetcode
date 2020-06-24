@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['ExcelUpdate.py'],
+a = Analysis(['ExcelUpdate.'],
              pathex=['/home/yanan/work/leetcode/excel'],
              binaries=[],
              datas=[],

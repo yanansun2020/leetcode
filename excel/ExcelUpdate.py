@@ -21,7 +21,7 @@ class Solution:
         wb = load_workbook(filename= file_home)
         sheet_ranges = wb['Daily STL Check']
         index = 111
-        while index <= 500:
+        while index <= 2000:
             reticleId = sheet_ranges.cell(row=index, column=5).value
             if reticleId:
                 reticleId = reticleId.replace('-', '')
