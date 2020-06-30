@@ -11,13 +11,15 @@ class Solution:
         for i in range(K + 1):
             tmp = list(cost)
             for p in flights:
-                tmp[p[1]] = min(tmp[p[1]], cost[p[0]] + p[2])
+                desc_ = p[1]
+                src_ = p[0]
+                tmp[desc_] = min(tmp[desc_], cost[src_] + p[2])
             cost = tmp
         return -1 if cost[dst] >= 1e9 else cost[dst]
 
 def main():
     sol = Solution()
-    result = sol.findCheapestPrice(3, [[0,1,100],[1,2,100],[0,2,500]], 0, 2, 0)
+    result = sol.findCheapestPrice(3, [[0,1,100],[1,2,100],[0,2,500]], 0, 2, 1)
     print(result)
 
 if __name__ == "__main__":
