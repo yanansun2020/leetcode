@@ -16,7 +16,7 @@ class Solution:
         return lps
 def main():
     sol = Solution()
-    result = sol.build_kmp_table("acacabacacabacacac")
+    result = sol.build_kmp_table("ab#ab")
     print(result)
     s = 'acacabacacabacacac'
     result = sol.build_kmp_table(s)
