@@ -3,16 +3,6 @@ class Solution:
         tmp = []
         for num in nums:
 
-        def addToTmp(num):
-            N = len(tmp)
-            if N == 0:
-                tmp.append(num)
-                return
-            l, r = 0, N -1
-            while l <= r:
-                if nums[]
-
-
 
 def main():
     sol = Solution()
