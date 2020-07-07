@@ -41,8 +41,7 @@ class Solution:
             while i >= 0:
                 c = 0
                 while len(q) != 0 and q[-1][0] > p_arr[i][j]:
-                    to_sum -= (q[-1][1] + 1) * \
-                                (q[-1][0] - p_arr[i][j])
+                    to_sum -= (q[-1][1] + 1) * (q[-1][0] - p_arr[i][j])
                     c += q[-1][1] + 1
                     q.pop()
                 to_sum += p_arr[i][j]
@@ -52,7 +51,7 @@ class Solution:
         return ans
 def main():
     sol = Solution()
-    result = sol.numSubmat([[1, 1, 0], [1, 0, 1]]  )
+    result = sol.numSubmat([ [1, 0, 1],[1, 1, 0],[1, 1, 0]]  )
     print(result)
 
 if __name__ == "__main__":
