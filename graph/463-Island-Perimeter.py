@@ -10,7 +10,7 @@ class Solution:
             if i-1>= 0 and grid[i-1][j] == 1:
                 default_edge -= 1
             if i + 1 <  rows and grid[i+1][j] ==1:
-                default_e   dge -= 1
+                default_edge -= 1
             if j -1 >= 0 and grid[i][j-1] == 1:
                 default_edge -= 1
             if j+1<cols and grid[i][j+1] == 1:
