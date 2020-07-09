@@ -19,7 +19,6 @@ class Solution:
                 if target1 + candidates[i] > target:
                     return
                 array.append(candidates[i])
-                # target1 += candidates[i]
                 getCombs(candidates, array, target1 + candidates[i], i+1)
                 array.pop()
         candidates.sort()
