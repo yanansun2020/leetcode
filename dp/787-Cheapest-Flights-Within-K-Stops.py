@@ -1,7 +1,8 @@
 import sys
 from typing import List
 class Solution:
-    #dp[k][v] = minimum cost from src to v with k steps
+    # bellman-ford
+    # dp[k][v] = minimum cost from src to v with k steps
     #dp[k][v] = min(dp[k-1][u] + c[u][v], dp[k-1][v])
     def findCheapestPrice(self, n, flights, src, dst, K):
         kInfCost = 1e9
@@ -9,12 +10,12 @@ class Solution:
         cost[src] = 0
 
         for i in range(K + 1):
-            tmp = list(cost)
+            # tmp = list(cost)
             for p in flights:
                 desc_ = p[1]
                 src_ = p[0]
-                tmp[desc_] = min(tmp[desc_], cost[src_] + p[2])
-            cost = tmp
+                cost[desc_] = min(cost[desc_], cost[src_] + p[2])
+            # cost = tmp
         return -1 if cost[dst] >= 1e9 else cost[dst]
 
 def main():
