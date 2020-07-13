@@ -10,12 +10,12 @@ class Solution:
         cost[src] = 0
 
         for i in range(K + 1):
-            # tmp = list(cost)
+            tmp = list(cost)
             for p in flights:
                 desc_ = p[1]
                 src_ = p[0]
                 cost[desc_] = min(cost[desc_], cost[src_] + p[2])
-            # cost = tmp
+            cost = tmp
         return -1 if cost[dst] >= 1e9 else cost[dst]
 
 def main():
