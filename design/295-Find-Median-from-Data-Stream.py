@@ -1,6 +1,7 @@
 from heapq import heappop, heappush, heapify
 class MedianFinder:
     # two heaps, max_heap and min_heap, values in max_heap are less than that in min_heap
+    # In this case, middle values are at the first position of two heaps
     def __init__(self):
         """
         initialize your data structure here.
