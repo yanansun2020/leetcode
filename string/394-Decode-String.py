@@ -21,6 +21,22 @@ class Solution:
             result += stack[-1]
             stack.pop(-1)
         return result[::-1]
+
+    # def decodeString_revursion(self, s: str) -> str:
+    #     def decode(index, digit):
+    #         tmp_digit = ""
+    #         tmp_result = ""
+    #         for i in range(index, len(s)):
+    #             if s[i] == ']':
+    #                 return tmp_result * int(digit), i
+    #             elif s[i].isdigit():
+    #                 tmp_digit += s[i]
+    #             elif s[i] == '[':
+    #                 tmp_result += decode(i+1, tmp_digit)
+    #             else:
+    #                 tmp_result += s[i]
+
+
 def main():
     sol = Solution()
     result = sol.decodeString("10[q]")
