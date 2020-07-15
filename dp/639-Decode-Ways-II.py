@@ -25,6 +25,14 @@ class Solution:
                 count += 1
             return count
 
+        if s[0] == "*" and s[1] == "*":
+            for i in range(1, 10):
+                for j in range(1, 10):
+                    s_ = str(i) + str(j)
+                    if '09'<s_<'27':
+                        count += 1
+            return count
+
         if s[0].isdigit() and s[1] == "*":
             for i in range(1, 10):
                 s_ = s[0] + str(i)
@@ -37,13 +45,7 @@ class Solution:
                 if '09'<s_<'27':
                     count += 1
             return count
-        if s[0] == "*" and s[1] == "*":
-            for i in range(1, 10):
-                for j in range(1, 10):
-                    s_ = str(i) + str(j)
-                    if '09'<s_<'27':
-                        count += 1
-            return count
+
 def main():
     sol = Solution()
     # result = sol.numDecodings("211*")
