@@ -44,6 +44,10 @@ def main():
     print(result)
     # result = sol.wordBreak("applepenapple123",["apple", "pen"])
     # print(result)
+    result = sol.wordBreak_recursive("leetcode", ["leet", "code"])
+    print(result)
+    result = sol.wordBreak_recursive("applepenapple123",["apple", "pen"])
+    print(result)
 
 if __name__ == "__main__":
     main()

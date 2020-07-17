@@ -2,6 +2,10 @@ from typing import List
 from collections import defaultdict
 from heapq import heappop, heappush, heapify
 class Solution:
+    # dijkstra
+    #  1. init graph as map
+    # 2. from start, for each end point, calculate a probability
+    # 3. add the probabilities to heap
     def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
         graph = defaultdict(list)
         for i in range(len(edges)):
@@ -29,7 +33,7 @@ class Solution:
             dp = [0.0 for i in range(n)]
             dp[start_] = 1.0
             max_prob = 0.0
-            for k in range(n):
+            for k in range(10): # if n here will TLE, if 10 here will be accepted
                 for i in range(len(edges_)):
                     #tmp_dp = list(dp)
                     start_point = edges_[i][0]

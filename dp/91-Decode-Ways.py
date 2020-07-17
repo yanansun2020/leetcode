@@ -11,7 +11,9 @@ class Solution:
 
 def main():
     sol = Solution()
-    result = sol.numDecodings("21")
+    # result = sol.numDecodings("226")
+    # print(result)
+    result = sol.numDecodings("01")
     print(result)
 
 if __name__ == "__main__":
