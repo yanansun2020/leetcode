@@ -1,32 +1,33 @@
 from typing import List
+import bisect
 class Solution:
+    # using bisect() to find index to insert new element, right most possible index by default
+    # using bisect_left() to find index to insert new element
+    # using bisect_right() to find index to insert new element
     def numFriendRequests(self, ages: List[int]) -> int:
         ages.sort()
-        count = 0
-        def getTarget(left, right, target):
-            while left <= right:
-                mid = left + (right - left)//2
-                if ages[mid] > target:
-                    right = mid -1
-                elif ages[mid] < target:
-                    left = mid + 1
-                else:
-                    return mid + 1
-            return left
-
-        for i in range(len(ages)-1, 0, -1):
-            target_ages = 0.5 * ages[i] + 7
-            index = getTarget(0, i, target_ages)
-            count += (i-index)
-        return count
-
+        n = len(ages)
+        total = 0
+        for age in ages:
+            low_age = int(age * 0.5) + 7
+            high_age = age
+            if low_age >= high_age:
+                continue
+            lo = bisect.bisect(ages, low_age)
+            if lo >= n:
+                continue
+            hi = bisect.bisect(ages, high_age) - 1
+            total += hi - lo
+        return total
 def main():
     sol = Solution()
-    result = sol.numFriendRequests([16,16])
-    print(result)
-    result = sol.numFriendRequests([18, 16,18])
+    # result = sol.numFriendRequests([16,16])
+    # print(result)
+    result = sol.numFriendRequests([16, 16, 17,17,17, 18,18])
+    # idx = bisect.bisect([16, 17,17,17, 18,18], 17)
     print(result)
     result = sol.numFriendRequests([16,17,18])
+    idx = bisect.bisect([16, 17,18], 17)
     print(result)
     result = sol.numFriendRequests([20,30,100, 110,120])
     print(result)
