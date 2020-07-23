@@ -5,7 +5,8 @@ import sys
 import bisect
 class Solution:
     #正常random 函数，每个数字被获取的概率是相同的，带有权重的随机数可以看做 sum（权重）个随机数，但多个随机数可以对应同样的index
-    # e.g. list=[1, 3], can be viewed as four random integer[1, 4], when 1 is get, the index =1, when 2,3,4 is get, the index is 2
+    # e.g. list=[1, 3], can be viewed as four random integer[1, 4], when 1 is get, the index =1,
+    # when 2,3,4 is get, the index is 2
     def __init__(self, w: List[int]):
         self.dp = []
         for i, ele in enumerate(w):
@@ -16,18 +17,16 @@ class Solution:
 
     def pickIndex(self) -> int:
         target = random.randint(0, self.dp[-1] -1)
-        return bisect.bisect_right(self.dp, target)
-        # left, right = 0, len(self.dp) -1
-        # while left <= right:
-        #     mid = (left + right)//2
-        #     left_bound = 0 if mid == 0 else self.dp[mid -1]
-        #     if left_bound < target <= self.dp[mid]:
-        #         return mid
-        #     if self.dp[mid] < target:
-        #         left = mid + 1
-        #     else:
-        #         mid = right -1
-        # return None
+        # return bisect.bisect_right(self.dp, target)
+        left, right = 0, len(self.dp) -1
+        while left != right:
+            mid = (left + right)//2
+            if target >= self.dp[mid]:
+                left = mid + 1
+            else:
+                right = mid
+        return left
+
 def main():
     sol = Solution([1,3])
     result = sol.pickIndex()
