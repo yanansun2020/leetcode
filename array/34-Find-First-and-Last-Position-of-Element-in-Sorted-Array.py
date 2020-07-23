@@ -3,6 +3,10 @@ class Solution:
     # 278. First Bad Version
     # 35. Search Insert Position
     # 69. Sqrt(x)
+    # 875. Koko Eating Bananas
+    # 378. Kth Smallest Element in a Sorted Matrix
+    # 658. Find K Closest Elements
+
     def searchRange(self, nums: List[int], target: int) -> List[int]:
 
         def lower_bound(target, nums):
