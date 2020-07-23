@@ -1,5 +1,8 @@
 from typing import List
 class Solution:
+    # 278. First Bad Version
+    # 35. Search Insert Position
+    # 69. Sqrt(x)
     def searchRange(self, nums: List[int], target: int) -> List[int]:
 
         def lower_bound(target, nums):
