@@ -1,6 +1,40 @@
 from typing import List
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
+
+        def lower_bound(target, nums):
+            left, right = 0, len(nums)-1
+            while left < right:
+                mid = left + (right-left)//2
+                if nums[mid] >= target:
+                    right = mid
+                else:
+                    left = mid + 1
+            return left
+        def upper_bound(target, nums):
+            left, right = 0, len(nums) -1
+            while left < right:
+                mid = left + (right - left)//2
+                if nums[mid] > target:
+                    right = mid
+                else:
+                    left = mid + 1
+            return left -1
+
+        def bisearch(target, nums):
+            left, right = 0, len(nums) -1
+            while left < right:
+                mid = left + (right - left)//2
+                #change here
+                if nums[mid] > target:
+                    right = mid
+                else:
+                    left = mid + 1
+            return left
+        return [lower_bound(target, nums), upper_bound(target, nums)]
+
+    # complex solution
+    def searchRange_1(self, nums: List[int], target: int) -> List[int]:
         left, right = 0, len(nums) -1
         result = []
         def searchLeftEdge(left, right, target):
@@ -43,7 +77,11 @@ class Solution:
 
 def main():
     sol = Solution()
+    result = sol.searchRange([5,7,7,8,8,10], 8)
+    print(result)
     result = sol.searchRange([0, 1, 1, 4], 1)
+    print(result)
+    result = sol.searchRange_1([0, 1, 1, 4], 1)
     print(result)
 
     result = sol.searchRange([5,7,7,8,8,10], 8)
