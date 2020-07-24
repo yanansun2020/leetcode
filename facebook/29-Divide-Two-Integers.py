@@ -1,5 +1,6 @@
 class Solution:
     # dividend = divisor *(2^k +2^k-1...)
+    #similar question:50
     def divide(self, dividend: int, divisor: int) -> int:
         max_int = pow(2, 31) -1
         sign = -1 if ((dividend > 0) ^ (divisor > 0)) else 1
