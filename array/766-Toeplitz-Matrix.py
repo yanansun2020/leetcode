@@ -1,6 +1,6 @@
 from typing import List
 class Solution:
-    # check the matrix[i][j] == matrinx[i-1][j-1]
+    # check the matrix[i][j] == matrinx[i-1][]
     def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
         rows = len(matrix)
         cols = len(matrix[0])
