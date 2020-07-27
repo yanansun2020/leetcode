@@ -1,0 +1,4 @@
+language: java
+jdk: jdk8
+after_success:
+  - mvn coveralls:report
