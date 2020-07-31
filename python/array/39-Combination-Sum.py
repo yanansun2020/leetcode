@@ -2,6 +2,21 @@ from typing import List
 from collections import defaultdict
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        ans = []
+        def dfs(t, array):
+            if t == 0:
+                array.sort()
+                if array not in ans:
+                    ans.append(array)
+                return
+            for i in range(0, len(candidates)):
+                if candidates[i] > t:
+                    continue
+                dfs(t-candidates[i], array + [candidates[i]])
+        dfs(target, [])
+        return ans
+
+    def combinationSum_complex(self, candidates: List[int], target: int) -> List[List[int]]:
         results = []
         memo = defaultdict()
         def getCombs(candidates, array, sum_):
