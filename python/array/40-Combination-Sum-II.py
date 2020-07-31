@@ -4,6 +4,23 @@ from collections import Counter
 import copy
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        ans = []
+        def dfs(index, t, array):
+            if t == 0 or index == len(candidates):
+                if t == 0:
+                    ans.append(array)
+                return
+            for i in range(index, len(candidates)):
+                if i > index and candidates[i] == candidates[i-1]:
+                    continue
+                if candidates[i] > t:
+                    continue
+                dfs(i + 1, t-candidates[i], array + [candidates[i]])
+        candidates.sort()
+        dfs(0, target, [])
+        return ans
+
+    def combinationSum2_solution2(self, candidates: List[int], target: int) -> List[List[int]]:
         results = []
         memo = defaultdict()
         def getCombs(candidates, array, target1, start):
@@ -28,6 +45,8 @@ class Solution:
 
 def main():
     sol = Solution()
+    # result = sol.combinationSum2([1,2,1], 3)
+    # print(result)
     result = sol.combinationSum2([10,1,2,7,6,1,5], 8)
     print(result)
     # result = sol.combinationSum2([2,3,5], 8)
