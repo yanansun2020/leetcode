@@ -1,26 +1,25 @@
 from typing import List
 class Solution:
     def addOperators(self, num: str, target: int) -> List[str]:
-        init_num = int(num[0])
         result = []
-
-        def dfs(num1:int, index:int, expression)->int:
-            if index == len(num) and target == num1:
-                if expression not in result:
+        def dfs(num1, diff, curNum, expression)->int:
+            if not num1:
+                if target == curNum and expression not in result:
                     result.append(expression)
                 return
-            for i in range(index, len(num)):
-                num2 = int(num[index])
-                expression_plus = str(expression)
-                expression_plus +=  "+" + num[index]
-                dfs(num1 + num2, index+1, expression_plus)
-                expression_minus = str(expression)
-                expression_minus +=  "-" + num[index]
-                dfs(num1 - num2, index+1, expression_minus)
-                expression_multi = str(expression)
-                expression_multi += "*" + num[index]
-                dfs(num1 * num2, index+1, expression_multi)
-        dfs(init_num, 1, num[0])
+            for i in range(1, len(num1)+1):
+                cur_str = num1[0:i]
+                cur = int(cur_str)
+                if (len(cur_str)> 1 and cur_str[0] == '0'):
+                    return
+                next_num1 = num1[i:]
+                if expression:
+                    dfs(next_num1, cur, curNum + cur, expression + "+" + cur_str)
+                    dfs(next_num1, -cur, curNum-cur, expression + "-" + cur_str)
+                    dfs(next_num1, diff * cur, (curNum-diff) + (diff * cur), expression + "*" + cur_str)
+                else:
+                    dfs(next_num1, cur, cur, cur_str)
+        dfs(num, 0, 0, "")
         return result
 
 def main():
