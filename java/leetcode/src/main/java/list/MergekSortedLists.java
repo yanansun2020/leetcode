@@ -2,8 +2,34 @@ package list;
 
 import org.junit.Test;
 
+import java.util.PriorityQueue;
+
 public class  MergekSortedLists{
+//    priority soution
     public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        PriorityQueue<ListNode> minHeap = new PriorityQueue<>((o1, o2) -> o1.val - o2.val);
+        for (ListNode node : lists) {
+            if (node != null)
+                minHeap.add(node);
+        }
+        ListNode head = new ListNode();
+        ListNode temp = head;
+        ListNode node;
+        while (!minHeap.isEmpty()) {
+            node = minHeap.remove();
+            temp.next = node;
+            temp = temp.next;
+            if (node.next != null) {
+                minHeap.add(node.next);
+            }
+        }
+        return head.next;
+    }
+//    directly merge solution
+    public ListNode mergeKLists_merge(ListNode[] lists) {
         if(lists == null || lists.length == 0){
             return null;
         }
@@ -16,32 +42,24 @@ public class  MergekSortedLists{
         }
         return init_list;
     }
-    public ListNode merge(ListNode node_i, ListNode node_j){
-        ListNode pre = new ListNode();
-        ListNode result = pre;
-        while(node_i != null && node_j != null){
-            if(node_i.val == node_j.val){
-                pre.next = new ListNode(node_i.val);
-                pre.next.next = new ListNode(node_i.val);
-                node_i = node_i.next;
-                node_j = node_j.next;
-                pre = pre.next;
-            }else if(node_i.val > node_j.val){
-                pre.next = new ListNode(node_j.val);
-                node_j = node_j.next;
-            }else{
-                pre.next = new ListNode(node_i.val);
-                node_i = node_i.next;
+    public ListNode merge(ListNode l1, ListNode l2){
+        ListNode head = new ListNode(-1);
+        ListNode prev = head;
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                prev.next = l1;
+                l1 = l1.next;
+            } else {
+                prev.next = l2;
+                l2 = l2.next;
             }
-            pre = pre.next;
+
+            prev = prev.next;
         }
-        if (node_i != null){
-            pre.next = node_i;
-        }
-        if (node_j != null){
-            pre.next = node_j;
-        }
-        return result.next;
+
+        prev.next = l1 == null ? l2 : l1;
+
+        return head.next;
     }
     @Test
     public void test(){
