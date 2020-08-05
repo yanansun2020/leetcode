@@ -9,6 +9,18 @@ public class PseudoPalindromicPathsinaBinaryTree {
 
         //return count;
     }
+    public int dfs_bit(TreeNode node, Integer count){
+        if(node == null){
+            return 0;
+        }
+        count ^= (1<<node.val);
+        if (node.left == null && node.right == null){
+            return (count & (count-1)) == 0? 1 : 0;
+        }
+        int left = dfs_bit(node.left, count);
+        int right = dfs_bit(node.right, count);
+        return left + right;
+    }
     public int dfs(TreeNode node, Map<Integer, Integer> frequency){
         if(node == null){
             return 0;

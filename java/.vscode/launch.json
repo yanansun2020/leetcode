@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - NextGreaterElementII",
+            "request": "launch",
+            "mainClass": "list.NextGreaterElementII",
+            "projectName": "leetcode"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - NumberofWaystoPaintGrid",
+            "request": "launch",
+            "mainClass": "dp.NumberofWaystoPaintGrid",
+            "projectName": "leetcode"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
