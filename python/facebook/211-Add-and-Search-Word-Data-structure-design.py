@@ -47,22 +47,21 @@ class WordDictionary:
         return self.dfs(0, word, node)
 
     def dfs(self,start, word, node):
-        if start == len(word) and node.isEnd == True:
-            return True
-        for index in range(start, len(word)):
-            if word[index] != ".":
-                trieNode = node.getNodeByCh(word[index])
-                if not trieNode:
-                    return False
-                return self.dfs(start + 1, word, trieNode)
-            else:
-                for ch in ascii_lowercase:
-                    trieNode = node.getNodeByCh(ch)
-                    if trieNode:
-                        result = self.dfs(start + 1, word, trieNode)
-                        if result:
-                            return True
+        if start == len(word):
+            return node.isEnd
+        if word[start] != ".":
+            trieNode = node.getNodeByCh(word[start])
+            if not trieNode:
                 return False
+            return self.dfs(start + 1, word, trieNode)
+        else:
+            for ch in ascii_lowercase:
+                trieNode = node.getNodeByCh(ch)
+                if trieNode:
+                    result = self.dfs(start + 1, word, trieNode)
+                    if result:
+                        return True
+            return False
 
     def search_whole_word(self, word):
         node = self.root
@@ -77,28 +76,41 @@ class WordDictionary:
 
 def main():
     sol = WordDictionary()
-    result = sol.addWord("bad")
-    print(result)
-    result = sol.addWord("dad")
-    print(result)
-    result = sol.addWord("mad")
-    print(result)
+    # result = sol.addWord("bad")
+    # print(result)
+    # result = sol.addWord("dad")
+    # print(result)
+    # result = sol.addWord("mad")
+    # print(result)
 
     # result = sol.addWord("abgd")
     # print(result)
-    result = sol.search("pad")
-    print(result)
-    result = sol.search("bad")
-    print(result)
-    result = sol.search(".ad")
-    print(result)
-    result = sol.search("b..")
-    print(result)
+    # result = sol.search("pad")
+    # print(result)
+    # result = sol.search("bad")
+    # print(result)
+    # result = sol.search(".ad")
+    # print(result)
+    # result = sol.search("b..")
+    # print(result)
     # result = sol.search("abg")
     # print(result)
     # result = sol.search("abgd")
     # print(result)
     # result = sol.search("abgh")
     # print(result)
+    result = sol.addWord("at")
+    result = sol.addWord("and")
+    result = sol.addWord("an")
+    result = sol.addWord("add")
+    result = sol.search("a")
+    result = sol.search(".at")
+    result = sol.addWord("bat")
+    result = sol.search(".at")
+    result = sol.search("an.")
+    result = sol.search("a.d.")
+    result = sol.search("b.")
+    result = sol.search("a.d")
+    result = sol.search(".")
 if __name__ == "__main__":
     main()

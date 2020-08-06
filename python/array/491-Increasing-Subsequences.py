@@ -1,5 +1,8 @@
 from typing import List
 class Solution:
+    # similar question :
+    # 78. Subsets
+    # SubsetsII
     def findSubsequences(self, nums: List[int]) -> List[List[int]]:
         ans = []
         def dfs(index, array):
