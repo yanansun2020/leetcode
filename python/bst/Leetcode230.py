@@ -1,28 +1,39 @@
 from TreeNode import TreeNode
 class Solution:
-    result = 0
-    n = 0
     def kthSmallest(self, root: TreeNode, k: int) -> int:
+        stack = []
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            node = stack.pop()
+            k -= 1
+            if k ==0:
+                return node.val
+            root = node.right
+
+    def kthSmallest_dfs(self, root: TreeNode, k: int) -> int:
         self.n = k
-        self.getDepth(root)
-        return self.result
-
-    def getDepth(self, root):
-        if not root or self.n <= 0:
-            return
-        self.getDepth(root.left)
-        self.n = self.n -1
-        if self.n == 0:
-            self.result = root.val
-            return
-        self.getDepth(root.right)
-
+        def dfs(node):
+            if not node:
+                return None
+            left = dfs(node.left)
+            if left is not None:
+                return left
+            self.n -= 1
+            if self.n == 0:
+                return node.val
+            right = dfs(node.right)
+            return right
+        return dfs(root)
 
 def main():
     sol = Solution()
+    root = TreeNode(1, None, TreeNode(2))
+    result = sol.kthSmallest(root, 2)
+    print(result)
     root = TreeNode(5, TreeNode(3, TreeNode(2, TreeNode(1, None, None), None), TreeNode(4, None, None)), TreeNode(5, None, None))
-
-    result = sol.kthSmallest(root, 6)
+    result = sol.kthSmallest(root, 1)
     print(result)
 
 if __name__ == "__main__":
