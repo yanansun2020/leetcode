@@ -25,6 +25,8 @@ class Solution:
 
 def main():
     sol = Solution()
+    result = sol.isMatch("aaa","*")
+    print(result)
     result = sol.isMatch("acdcb","a*c?b")
     print(result)
 

@@ -30,7 +30,9 @@ class Solution:
 def main():
     sol = Solution()
 
-    result = sol.droppedRequests([1,1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,7,11,11,11,11])
+    # result = sol.droppedRequests([1,1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,7,11,11,11,11])
+    # print(result)
+    result = sol.droppedRequests([7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,10, 11])
     print(result)
 
 if __name__ == "__main__":
