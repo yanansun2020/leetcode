@@ -33,7 +33,7 @@ public class ManagerNodes {
         if(tmpAvrg > maxAvg){
             maxTenure = new Tenure(tmpAvrg, tmpNodeNumber, tmpSum, node);
         }
-       return maxTenure;
+       return new Tenure(maxTenure.average, tmpNodeNumber, tmpSum, maxTenure.node);
     }
 
     //pass all test case
