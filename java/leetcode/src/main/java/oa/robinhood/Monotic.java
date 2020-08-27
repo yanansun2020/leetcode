@@ -1,4 +1,4 @@
-package robinhood;
+package oa.robinhood;
 
 public class Monotic {
     int[] checkMonotonicity(int[] arr) {
