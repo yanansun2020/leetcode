@@ -1,4 +1,4 @@
-package amazon;
+package oa.amazon;
 
 public class Rotation {
     int countRotation(int list[], int low, int high){

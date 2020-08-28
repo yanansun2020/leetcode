@@ -1,4 +1,4 @@
-package amazon;
+package oa.amazon;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package amazon;
+package oa.amazon;
 
 public class CountTripletSumPermutation {
     int count(int size, int[] arr, int tripleSum){

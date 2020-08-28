@@ -1,4 +1,4 @@
-package amazon;
+package oa.amazon;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package amazon;
+package oa.amazon;
 
 public class RemoveConsecutiveVowel {
     boolean isVowel(char ch){
