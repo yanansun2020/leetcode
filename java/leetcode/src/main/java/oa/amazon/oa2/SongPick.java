@@ -1,4 +1,4 @@
-package amazon.oa2;
+package oa.amazon.oa2;
 
 import org.junit.Test;
 
@@ -43,11 +43,3 @@ public class SongPick {
     }
 }
 
-class PairInt{
-    int first, second;
-    PairInt(){}
-    PairInt(int first, int second){
-        this.first = first;
-        this.second = second;
-    }
-}

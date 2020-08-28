@@ -1,4 +1,4 @@
-package amazon.oa2;
+package oa.amazon.oa2;
 
 import org.junit.Test;
 
@@ -87,5 +87,14 @@ class RouteDistance{
         this.forwardRoute = forwardRoute;
         this.returnRoute = returnRoute;
         this.distance = distance;
+    }
+}
+
+class PairInt{
+    int first;
+    int second;
+    PairInt(int first, int second){
+        this.first = first;
+        this.second = second;
     }
 }

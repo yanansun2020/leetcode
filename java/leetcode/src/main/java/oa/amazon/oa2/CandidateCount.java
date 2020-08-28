@@ -1,4 +1,4 @@
-package amazon.oa2;
+package oa.robinhood.amazon.oa2;
 
 import org.junit.Test;
 

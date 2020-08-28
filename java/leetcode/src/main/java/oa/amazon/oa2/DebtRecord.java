@@ -1,4 +1,4 @@
-package amazon.oa2;
+package oa.amazon.oa2;
 
 import java.util.ArrayList;
 import java.util.Collections;
