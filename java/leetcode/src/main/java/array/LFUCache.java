@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LFUCache {
-    Node head;
-    Node tail;
-    Map<Integer, Node> map;
+    KeyNode head;
+    KeyNode tail;
+    Map<Integer, KeyNode> map;
     int capacity;
     public LFUCache(int capacity) {
-        head = new Node(-1, -1);
-        tail = new Node(-1,-1);
+        head = new KeyNode(-1, -1);
+        tail = new KeyNode(-1,-1);
         head.next =tail;
         tail.pre = head;
         map = new HashMap<>();
@@ -21,47 +21,47 @@ public class LFUCache {
         if(!map.containsKey(key)){
             return -1;
         }
-        Node node = map.get(key);
-        remove(node);
-        node.frequency+=1;
-        add(node);
-        return node.value;
+        KeyNode keyNode = map.get(key);
+        remove(keyNode);
+        keyNode.frequency+=1;
+        add(keyNode);
+        return keyNode.value;
     }
     public void put(int key, int value) {
-        Node node = map.get(key);
-        if(node != null){
-            remove(node);
-            map.remove(node.key);
+        KeyNode keyNode = map.get(key);
+        if(keyNode != null){
+            remove(keyNode);
+            map.remove(keyNode.key);
         }else{
-            node = new Node(key, value);
+            keyNode = new KeyNode(key, value);
         }
         if(map.size() == capacity){
-            Node nodeRemove = tail.pre;
-            remove(nodeRemove);
-            map.remove(nodeRemove.key);
+            KeyNode keyNodeRemove = tail.pre;
+            remove(keyNodeRemove);
+            map.remove(keyNodeRemove.key);
         }
-        node.frequency += 1;
-        node.value = value;
-        add(node);
-        map.put(key, node);
+        keyNode.frequency += 1;
+        keyNode.value = value;
+        add(keyNode);
+        map.put(key, keyNode);
 
     }
-    public void remove(Node node){
-        Node previous = node.pre;
-        Node next = node.next;
+    public void remove(KeyNode keyNode){
+        KeyNode previous = keyNode.pre;
+        KeyNode next = keyNode.next;
         previous.next = next;
         next.pre = previous;
     }
-    public void add(Node node){
-        Node tmpNode = head.next;
-        while(tmpNode.frequency > node.frequency){
-            tmpNode = tmpNode.next;
+    public void add(KeyNode keyNode){
+        KeyNode tmpKeyNode = head.next;
+        while(tmpKeyNode.frequency > keyNode.frequency){
+            tmpKeyNode = tmpKeyNode.next;
         }
-        Node previous = tmpNode.pre;
-        previous.next = node;
-        node.pre = previous;
-        node.next = tmpNode;
-        tmpNode.pre = node;
+        KeyNode previous = tmpKeyNode.pre;
+        previous.next = keyNode;
+        keyNode.pre = previous;
+        keyNode.next = tmpKeyNode;
+        tmpKeyNode.pre = keyNode;
     }
 //    @Test
     public static void main(String[] args){
@@ -90,14 +90,14 @@ public class LFUCache {
         int d = cache.get(2);
     }
 }
-class Node{
+class KeyNode {
     int key;
     int value;
     int frequency;
-    Node pre;
-    Node next;
-    Node(){}
-    Node(int key, int value){
+    KeyNode pre;
+    KeyNode next;
+    KeyNode(){}
+    KeyNode(int key, int value){
         this.key = key;
         this.value = value;
     }
