@@ -239,7 +239,7 @@ int main()
     char *c3 = "gerbil";
     bool c = queue_insert_head(q, c3);
     queue_reverse(q);
-    // printf(*q);
+    printf("The value of s is: %p\n", *q);
     // q_remove_head(q, c3);
     // q_remove_head(q, c2);
     // q_remove_head(q, c1);
