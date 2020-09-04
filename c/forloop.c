@@ -4,10 +4,16 @@
 int main()
 {
     int nums[] = {567, 89, 90};
+
+    int *pNums = nums;
     // int a = sizeof(nums);
     for (int i =0; i < 3; i++) {
-        printf("%d\n", nums[i]);
+        printf("address is : %p, value is :%d :  %d\n", nums + i, *(nums + i), pNums[i]);
     }
+    int a = 1;
+    int const *  pA = &a;
+    *pA = 2;
+    printf("a is %d\n", *pA);
 
     int eles[2][2] = {{1,2}, {2,3}};
     for (int i =0; i<2; i++) {

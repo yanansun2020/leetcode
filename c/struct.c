@@ -8,7 +8,7 @@ struct Student
     char major[50];
     int age;
     double gpa;
-};
+} s ;
 
 int main(){
     struct Student student1;
