@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "random": "cpp"
+    },
+    "beautify.onSave": true,
+    "editor.formatOnSave": true
+}
