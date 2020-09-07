@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <ctype.h>
 
-void print(constchar *c)
+void print(const char *c)
 {
     //c[0] = 'A';
     int i = 0;
