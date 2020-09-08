@@ -13,11 +13,8 @@ public class ConstructBinaryTreefromString {
         int i = 0;
         while (i < s.length()) {
             int j = i;
-            while (Character.isDigit(s.charAt(i)) || s.charAt(i) == '-') {
+            while (i < s.length() && (Character.isDigit(s.charAt(i)) || s.charAt(i) == '-')) {
                 i++;
-                if (i >= s.length()) {
-                    break;
-                }
             }
             if (i > j) {
                 int value = Integer.parseInt(s.substring(j, i));
