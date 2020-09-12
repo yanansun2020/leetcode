@@ -4,9 +4,9 @@ typedef unsigned char *byte_pointer;
 
 void show_bytes(byte_pointer start, size_t len)
 {
-    int i;
+    size_t i;
     for (i = 0; i < len; i++)
-        printf(" %.2x", start[i]);
+        printf("%p\t 0x%.2x\n", start[i]);
     printf("\n");
 }
 void show_int(int x)
@@ -26,16 +26,16 @@ void show_pointer(void *x)
 
 int main()
 {
-    int ival = 2;
-    float fval = (float)ival;
-    int *pval = &ival;
+    // int ival = 2;
+    // float fval = (float)ival;
+    // int *pval = &ival;
     // show_int(ival);
     // show_float(fval);
     // show_pointer(pval);
 
-    int a = 0x12345678;
+    int a = 15213;
     byte_pointer ap = (byte_pointer)&a;
-    show_bytes(ap, 1); /* A. */
-    show_bytes(ap, 2); /* B. */
-    show_bytes(ap, 3); /* C. */
+    show_bytes(ap, sizeof(int)); /* A. */
+    // show_bytes(ap, 2);           /* B. */
+    // show_bytes(ap, 3);           /* C. */
 }
