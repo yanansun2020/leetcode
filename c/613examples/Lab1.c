@@ -334,6 +334,10 @@ int main()
     int flostles53 = floatIsLess1(4L, 2155872256L);
 
     unsigned scale = floatScale4(2130706432L);
+    unsigned scale12 = floatScale4(8388606L);
+    unsigned scale13 = floatScale4(2130706431L);
+    printf("%x\n", 2130706431L);
+
     unsigned scale11 = floatScale4(2L);
     unsigned scale1 = floatScale64(2130706432L);
 
