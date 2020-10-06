@@ -1,0 +1,57 @@
+package unionfind;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class UnionFind {
+    int n;
+    int[] parent;
+    int[] rank;
+    public UnionFind(int n){
+        this.n = n;
+        parent = new int[n];
+        rank = new int[n];
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+        }
+    }
+
+    /**
+     * return the parent of x
+     * @param x
+     * @return
+     */
+    public int find(int x){
+        if (parent[x] == x){
+            return x;
+        }
+        int par = find(parent[x]);
+        parent[x] = par;
+        return par;
+    }
+
+    public void union (int x, int y){
+        int par_x = find(x);
+        int par_y = find(y);
+        int rank_x = rank[par_x];
+        int rank_y = rank[par_y];
+        if (rank_x >= rank_y) {
+            parent[par_y] = par_x;
+            rank[par_x]++;
+        } else {
+            parent[par_x] = par_y;
+            rank[par_y]++;
+        }
+    }
+
+    public int getCircle(){
+        for (int i = 0; i < n; i++) {
+            find(i);
+        }
+        Set<Integer> set = new HashSet<Integer>();
+        for (int par : parent) {
+            set.add(par);
+        }
+        return set.size();
+    }
+}
