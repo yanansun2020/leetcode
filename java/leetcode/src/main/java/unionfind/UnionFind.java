@@ -10,6 +10,7 @@ public class UnionFind {
     int[] parent;
     int[] rank;
     List<List<Integer>> extraedges = new ArrayList<>();
+    int minimumCost = 0;
     /**
      * The connections are duplicated to make a group
      * also means there is a cycle
@@ -52,15 +53,11 @@ public class UnionFind {
         return par;
     }
 
-    public void union (int x, int y){
+    private boolean sameParent(int x, int y) {
         int par_x = find(x);
         int par_y = find(y);
         if (par_x == par_y) {
-            extraConnection++;
-            List<Integer> extrageEdge = new ArrayList<>();
-            extrageEdge.add(x);
-            extrageEdge.add(y);
-            extraedges.add(extrageEdge);
+            return true;
         }
         int rank_x = rank[par_x];
         int rank_y = rank[par_y];
@@ -71,6 +68,24 @@ public class UnionFind {
             parent[par_x] = par_y;
             rank[par_y]++;
         }
+        return false;
+    }
+
+    public void union (int x, int y){
+        if (sameParent(x, y)) {
+            extraConnection++;
+            List<Integer> extrageEdge = new ArrayList<>();
+            extrageEdge.add(x);
+            extrageEdge.add(y);
+            extraedges.add(extrageEdge);
+        }
+    }
+
+    public void union(int x, int y, int cost) {
+        if (sameParent(x, y)) {
+            return;
+        }
+        minimumCost += cost;
     }
 
     public int getCircle(){
