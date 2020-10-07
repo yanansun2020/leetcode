@@ -9,6 +9,7 @@ public class UnionFind {
     int[] rank;
     /**
      * The connections are duplicated to make a group
+     * also means there is a cycle
      */
     int extraConnection;
     public UnionFind(int n){
