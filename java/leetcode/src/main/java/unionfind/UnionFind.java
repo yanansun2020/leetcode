@@ -19,6 +19,11 @@ public class UnionFind {
             parent[i] = i;
         }
     }
+    public UnionFind(int[] parent){
+        this.n = parent.length;
+        this.parent = parent;
+        this.rank = new int[n];
+    }
 
     /**
      * return the parent of x
