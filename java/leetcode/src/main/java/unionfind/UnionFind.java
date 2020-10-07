@@ -53,7 +53,7 @@ public class UnionFind {
         return par;
     }
 
-    private boolean sameParent(int x, int y) {
+    private boolean unionfail(int x, int y) {
         int par_x = find(x);
         int par_y = find(y);
         if (par_x == par_y) {
@@ -71,18 +71,20 @@ public class UnionFind {
         return false;
     }
 
-    public void union (int x, int y){
-        if (sameParent(x, y)) {
+    public boolean union (int x, int y){
+        if (unionfail(x, y)) {
             extraConnection++;
             List<Integer> extrageEdge = new ArrayList<>();
             extrageEdge.add(x);
             extrageEdge.add(y);
             extraedges.add(extrageEdge);
+            return false;
         }
+        return true;
     }
 
     public void union(int x, int y, int cost) {
-        if (sameParent(x, y)) {
+        if (unionfail(x, y)) {
             return;
         }
         minimumCost += cost;
