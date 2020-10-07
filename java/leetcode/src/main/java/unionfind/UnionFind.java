@@ -1,12 +1,15 @@
 package unionfind;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UnionFind {
     int n;
     int[] parent;
     int[] rank;
+    List<List<Integer>> extraedges = new ArrayList<>();
     /**
      * The connections are duplicated to make a group
      * also means there is a cycle
@@ -18,6 +21,15 @@ public class UnionFind {
         rank = new int[n];
         for (int i = 0; i < n; i++) {
             parent[i] = i;
+        }
+    }
+
+    public UnionFind(int n, int start){
+        this.n = n;
+        parent = new int[n];
+        rank = new int[n];
+        for (int i = start; i < n + start; i++) {
+            parent[i - start] = i;
         }
     }
     public UnionFind(int[] parent){
@@ -45,6 +57,10 @@ public class UnionFind {
         int par_y = find(y);
         if (par_x == par_y) {
             extraConnection++;
+            List<Integer> extrageEdge = new ArrayList<>();
+            extrageEdge.add(x);
+            extrageEdge.add(y);
+            extraedges.add(extrageEdge);
         }
         int rank_x = rank[par_x];
         int rank_y = rank[par_y];
