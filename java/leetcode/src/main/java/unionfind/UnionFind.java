@@ -7,6 +7,10 @@ public class UnionFind {
     int n;
     int[] parent;
     int[] rank;
+    /**
+     * The connections are duplicated to make a group
+     */
+    int extraConnection;
     public UnionFind(int n){
         this.n = n;
         parent = new int[n];
@@ -33,6 +37,9 @@ public class UnionFind {
     public void union (int x, int y){
         int par_x = find(x);
         int par_y = find(y);
+        if (par_x == par_y) {
+            extraConnection++;
+        }
         int rank_x = rank[par_x];
         int rank_y = rank[par_y];
         if (rank_x >= rank_y) {
