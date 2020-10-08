@@ -100,4 +100,8 @@ public class UnionFind {
         }
         return set.size();
     }
+
+    public boolean isValid(int i) {
+        return i >= 0 && i <= n -1;
+    }
 }
