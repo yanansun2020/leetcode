@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * first find a satisfied string, then shrink
- * count is important
+ * count record thr number of uniq char -is important
  */
 public class MinimumWindowSubstring {
     public String minWindow(String s, String t) {
