@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.graph;
 
 import org.junit.Test;
 

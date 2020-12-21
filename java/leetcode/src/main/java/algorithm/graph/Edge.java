@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.graph;
 
 public class Edge {
     int weight;

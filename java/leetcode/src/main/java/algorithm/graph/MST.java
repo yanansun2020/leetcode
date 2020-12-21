@@ -1,5 +1,7 @@
-package algorithm;
+package algorithm.graph;
 
+import algorithm.DisjointSet;
+import algorithm.graph.Edge;
 import org.junit.Test;
 
 import java.util.ArrayList;

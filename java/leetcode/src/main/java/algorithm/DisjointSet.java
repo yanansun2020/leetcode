@@ -1,8 +1,8 @@
 package algorithm;
 
 public class DisjointSet {
-    int[] parents = null;
-    int[] rank = null;
+    int[] parents = null;//index:tree number parents[i] parent of tree i
+    int[] rank = null;//tree size
 
     public DisjointSet(int size){
         parents = new int[size];
