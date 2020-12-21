@@ -1,6 +1,6 @@
 package array;
 
-import javafx.util.Pair;
+// import javafx.util.Pair;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -13,6 +13,9 @@ import java.util.Set;
 import java.util.TreeMap;
 
 public class AnalyzeUserWebsiteVisitPattern {
+    /**
+     *
+
     public List<String> mostVisitedPattern(String[] username, int[] timestamp, String[] website) {
         Map<String, List<Pair<Integer, String>>> map = new TreeMap<>();
 
@@ -71,6 +74,7 @@ public class AnalyzeUserWebsiteVisitPattern {
         String[] website1 = {"a","b","a","a","b","c"};
         List<String> bb = mostVisitedPattern(userName1, time1, website1);
     }
+    */
 }
 class WebsiteTime{
     String website;

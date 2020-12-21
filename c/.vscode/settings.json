@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "random": "cpp",
+        "array": "c",
+        "deque": "c",
+        "forward_list": "c",
+        "list": "c",
+        "string": "c",
+        "vector": "c",
+        "scoped_allocator": "c",
+        "regex": "c",
+        "cmath": "c",
+        "complex": "c"
+    },
+    "beautify.onSave": true,
+    "editor.formatOnSave": true
+}
