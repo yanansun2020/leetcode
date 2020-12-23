@@ -38,4 +38,5 @@ public class AllPathsFromSourcetoTarget {
         int[][] graph = {{1,2},{3},{3},{}};
         List<List<Integer>> res = allPathsSourceTarget(graph);
     }
+
 }
