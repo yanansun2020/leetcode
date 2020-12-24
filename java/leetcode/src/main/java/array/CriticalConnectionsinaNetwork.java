@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Great explanation: https://www.youtube.com/watch?v=Rhxs4k6DyMM
+ */
 public class CriticalConnectionsinaNetwork {
     public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
         boolean[] visited = new boolean[n];
