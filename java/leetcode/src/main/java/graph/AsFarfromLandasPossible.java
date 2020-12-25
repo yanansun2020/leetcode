@@ -1,10 +1,8 @@
 package graph;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
+import org.junit.Test;
+
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 public class AsFarfromLandasPossible {
@@ -12,53 +10,59 @@ public class AsFarfromLandasPossible {
         if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
         }
-       int[][] distance = new int[grid.length][grid[0].length];
-        Arrays.fill(distance, Integer.MAX_VALUE);
-        List<Coordinate> lst = init_distance(grid, distance);
-        for (Coordinate coordinate : lst) {
-
-        }
-        return 0;
+        int rows = grid.length;
+        int cols = grid[0].length;
+        int[][] distance = new int[rows][cols];
+        Queue<Integer> queue = new LinkedList<>();
+        init_distance(grid, distance, queue);
+        return bfs(grid, distance, queue);
     }
-    Coordinate findFarWater(Coordinate start, int[][] grid, int[][] distance){
-        Coordinate res = null;
+    int bfs(int[][] grid, int[][] distance, Queue<Integer> queue){
+        int maxStep = -1;
         int[][] direction = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-        Queue<Coordinate> queue = new LinkedList<>();
-        queue.offer(start);
         while (!queue.isEmpty()) {
-            Coordinate ele = queue.poll();
+            Integer topEle = queue.poll();
+            int row = topEle/100;
+            int col = topEle%100;
             for (int[] dir : direction) {
-                int newRow = ele.row + dir[0];
-                int newCol = ele.col + dir[1];
-                if (newRow < 0 || newRow > grid.length || newCol < 0 || newCol > grid[0].length) {
+                int newRow = row + dir[0];
+                int newCol = col + dir[1];
+                if (newRow < 0 || newRow >= grid.length || newCol < 0 || newCol >= grid[0].length) {
                     continue;
                 }
                 if (grid[newRow][newCol] == 0) {
+                    if (distance[newRow][newCol] == 0) {
+                        distance[newRow][newCol] = 1 + distance[row][col];
+                    } else {
+                        distance[newRow][newCol] = Math.min(distance[newRow][newCol], 1 + distance[row][col]);
+                    }
+                    queue.offer(newRow * 100 + newCol);
+                    maxStep = Math.max(maxStep, distance[newRow][newCol]);
                 }
             }
+            grid[row][col] = 1;
         }
-        return null;
+        return maxStep;
     }
-    List<Coordinate> init_distance(int[][] grid, int[][] distance){
-        List<Coordinate> coordinates = new ArrayList<>();
+    void init_distance(int[][] grid, int[][] distance, Queue<Integer> queue){
         for (int i = 0; i < grid.length; i++){
             int[] row = grid[i];
             for (int j = 0; j < row.length; j++) {
                 if (row[j] == 1) {
-                    Coordinate coo = new Coordinate(i, j);
-                    coordinates.add(coo);
                     distance[i][j] = 0;
+                    queue.offer(i * 100 + j);
                 }
             }
         }
-        return coordinates;
     }
-}
-class Coordinate{
-    int row;
-    int col;
-    Coordinate(int row, int col){
-        this.row = row;
-        this.col = col;
+
+    @Test
+    public void test(){
+        int[][] grid = new int[][]{{1,0,1}, {0, 0, 0}, {1,0,1}};
+        int ans = maxDistance(grid);
+        grid = new int[][]{{1,0,0}, {0, 0, 0}, {0,0,0}};
+        ans = maxDistance(grid);
+        grid = new int[][]{{1,1,1}, {1,1,1}, {1,1,1}};
+        ans = maxDistance(grid);
     }
 }
