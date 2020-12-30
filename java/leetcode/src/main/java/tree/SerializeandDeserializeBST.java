@@ -9,17 +9,7 @@ import java.util.Queue;
 
 //
 //  Definition for a binary tree node.
-class TreeNode {
-    TreeNode(int val, TreeNode left, TreeNode right){
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-  int val;
-  TreeNode left;
-  TreeNode right;
-  TreeNode(int x) { val = x; }
-}
+
 public class SerializeandDeserializeBST {
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
