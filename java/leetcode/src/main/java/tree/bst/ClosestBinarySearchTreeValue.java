@@ -1,6 +1,7 @@
-package tree;
+package tree.bst;
 
 import org.junit.Test;
+import tree.TreeNode;
 
 import java.util.Stack;
 

@@ -23,19 +23,19 @@ public class NumArray {
     }
 
     /*below is segment tree implement
-    SegmentTreeNode root;
+    SegmentTree root;
     public NumArray(int[] nums) {
         if(nums != null && nums.length > 0){
-            root = SegmentTreeNode.buildTree(0, nums.length - 1, nums);
+            root = SegmentTree.buildTree(0, nums.length - 1, nums);
         }
     }
 
     public void update(int i, int val) {
-        SegmentTreeNode.updateTree(i, val, root);
+        SegmentTree.updateTree(i, val, root);
     }
 
     public int sumRange(int i, int j) {
-        return SegmentTreeNode.sumRange(root, i, j);
+        return SegmentTree.sumRange(root, i, j);
     }*/
 
     public static void main(String[] args){

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MST {
+public class KurskalMST {
     public List<Edge> getMST(int num, List<Edge> connections){
         Map<String, Integer> vertexMap = new HashMap<>();
         int index = 0;

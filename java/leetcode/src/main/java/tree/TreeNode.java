@@ -1,17 +1,21 @@
 package tree;
 
 import java.util.LinkedList;
-
+/**
+ * build binary node by array
+ * node.left = buildTree(nums, node, 2 * i + 1);
+ * node.right = buildTree(nums, node, 2 *i + 2);
+ */
 public class TreeNode {
-    TreeNode(int val, TreeNode left, TreeNode right){
+    public TreeNode(int val, TreeNode left, TreeNode right){
         this.val = val;
         this.left = left;
         this.right = right;
     }
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) { val = x; }
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
 
     public static TreeNode buildTree(Integer[] nums, int i){
         if (i >= nums.length || nums[i] == null) {
@@ -43,7 +47,7 @@ public class TreeNode {
                 nodeList.addLast(left);
             }
             i++;
-            if (nums[i] != null) {
+            if (i < nums.length && nums[i] != null) {
                 TreeNode right = new TreeNode(nums[i]);
                 topEle.right = right;
                 nodeList.addLast(right);

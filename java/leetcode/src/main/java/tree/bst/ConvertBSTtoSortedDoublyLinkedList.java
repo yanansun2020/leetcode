@@ -1,11 +1,12 @@
-package tree;
+package tree.bst;
 
 import org.junit.Test;
+import tree.TreeNode;
 
 public class ConvertBSTtoSortedDoublyLinkedList {
-    Node first = null;
-    Node last = null;
-    public Node treeToDoublyList(Node root) {
+    TreeNode first = null;
+    TreeNode last = null;
+    public TreeNode treeToDoublyList(TreeNode root) {
         if (root == null) return null;
 
         helper(root);
@@ -15,7 +16,7 @@ public class ConvertBSTtoSortedDoublyLinkedList {
         return first;
     }
 
-    public void helper(Node node) {
+    public void helper(TreeNode node) {
         if (node != null) {
             // left
             helper(node.left);
@@ -37,7 +38,7 @@ public class ConvertBSTtoSortedDoublyLinkedList {
     }
     @Test
     public void test(){
-        Node node = new Node(4, new Node(2, new Node(1), new Node(3)), new Node(5));
+        TreeNode node = new TreeNode(4, new TreeNode(2, new TreeNode(1), new TreeNode(3)), new TreeNode(5));
         treeToDoublyList(node);
     }
 }
