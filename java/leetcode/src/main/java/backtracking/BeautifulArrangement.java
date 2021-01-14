@@ -1,4 +1,4 @@
-package oa.c3ai;
+package backtracking;
 
 import java.util.ArrayList;
 import java.util.List;

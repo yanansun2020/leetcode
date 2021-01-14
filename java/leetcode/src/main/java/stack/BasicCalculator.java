@@ -61,6 +61,8 @@ public class BasicCalculator {
     }
     @Test
     public void test(){
+        String a = "a";
+        String b  = a.substring(1,0);
         int ans = calculate(" 1 + 1");
         int ans1 = calculate(" 2-1 + 2 ");
         int ans2 = calculate("(1+(4+5+2)-3)+(6+8)");

@@ -1,8 +1,11 @@
-package array;
+package backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * backtracking + bounding function
+ */
 public class Permutations {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
@@ -13,16 +16,19 @@ public class Permutations {
     }
     public void dfs(List<Integer> array, int[] nums, List<List<Integer>> ans){
         if (array.size() == nums.length){
-            ans.add(array);
+            ans.add(new ArrayList<>(array));
             return;
         }
         for(int i =0; i < nums.length; i++){
-            List<Integer> tmp_array = new ArrayList<>(array);
-            if(tmp_array.contains(nums[i])){
+            if(array.contains(nums[i])){
                 continue;
             }
-            tmp_array.add(nums[i]);
-            dfs(tmp_array, nums, ans);
+            //select a choice
+            array.add(nums[i]);
+            //expand the choice
+            dfs(array, nums, ans);
+            //remove the choice
+            array.remove(array.size() - 1);
         }
     }
 

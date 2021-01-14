@@ -1,0 +1,71 @@
+package bfs;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+
+public class WordLadder1 {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if (beginWord.equals(endWord)) {
+            return 1;
+        }
+        List<String> wordSet = new ArrayList<>();
+        for(String word : wordList){
+            if (!wordSet.contains(word)) {
+                wordSet.add(word);
+            }
+        }
+        Queue<Ladder> queue = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+        queue.offer(new Ladder(beginWord, 1));
+        visited.add(beginWord);
+        int steps = 1;
+        while (!queue.isEmpty()) {
+            Ladder ld = queue.poll();
+            String cur = ld.word;
+            int step = ld.step;
+            if (cur.equals(endWord)) {
+                return step;
+            }
+            List<Ladder> neighbors = getWords(ld, wordSet, visited);
+            queue.addAll(neighbors);
+        }
+        return 0;
+    }
+    private List<Ladder> getWords(Ladder ladder, List<String> wordList, Set<String> visited){
+        List<Ladder> ans = new ArrayList<>();
+        String beginWord = ladder.word;
+        int step = ladder.step;
+        int n = beginWord.length();
+        char[] array = beginWord.toCharArray();
+        for (int i = 0; i < n ; i++) {
+            char tmp = array[i];
+            for (char c = 'a'; c <= 'z'; c++) {
+                if (array[i] == c) {
+                    continue;
+                }
+                array[i] = c;
+                String s = String.valueOf(array);
+                if (!visited.contains(s) && wordList.contains(s)) {
+                    ans.add(new Ladder(s, step + 1));
+                }
+                visited.add(s);
+            }
+            array[i] = tmp;
+        }
+        return ans;
+    }
+}
+
+class Ladder{
+    String word;
+    int step;
+    Ladder(){}
+    Ladder(String word, int step){
+        this.word = word;
+        this.step = step;
+    }
+}
