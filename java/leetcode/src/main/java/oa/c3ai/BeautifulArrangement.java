@@ -14,7 +14,7 @@ public class BeautifulArrangement {
         return dfs(1, n, visited);
     }
     public int dfs(int pos, int n, int[] visited){
-        if (pos >= n) {
+        if (pos > n) {
             return 1;
         }
         int count = 0;
@@ -33,6 +33,6 @@ public class BeautifulArrangement {
     }
     @Test
     public void test(){
-        int ans = countArrangement(8);
+        int ans = countArrangement(4);
     }
 }
