@@ -2,6 +2,10 @@ package oa.amazon.ftoa;
 
 import org.junit.Test;
 
+/**
+ * time O(n)
+ * space :O(1)
+ */
 public class UtilizationChecks {
     public int finalInstances(int instances, int[] averageUtil) {
         int curInstance = instances;

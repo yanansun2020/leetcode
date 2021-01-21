@@ -27,6 +27,11 @@ public class KMP
         KMP.shortestPalindrome("abad");
     }
 
+    /**
+     * idea: find strings with same prefix and suffix
+     * @param s
+     * @return
+     */
     int[] getKMPTable(String s) {
         int[] table = new int[s.length()];
         int j = 0;

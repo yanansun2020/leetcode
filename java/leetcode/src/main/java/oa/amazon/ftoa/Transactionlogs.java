@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * time O(n)
+ * space O(n * 3)
+ */
 public class Transactionlogs {
     public String[] processLogFile(String[] logs, int threshold) {
         Map<String, Set<String>> map = new HashMap<>();

@@ -13,11 +13,11 @@ public class ProductBox {
         }
         PriorityQueue<int[]> pq = new PriorityQueue<>((a,b)-> b[1]-a[1]);
         for (int i=0;i<num;i++){
-            pq.add(new int  [] {boxes.get(i),unitsPerBox.get(i)});
+            pq.add(new int[] {boxes.get(i),unitsPerBox.get(i)});
         }
         long max=0;
-        while(truckSize>0){
-            int [] cur= pq.remove();
+        while (truckSize > 0) {
+            int [] cur= pq.poll();
             int units=cur[1];
             int box=cur[0];
             max= max + (units * Math.min(truckSize,box));

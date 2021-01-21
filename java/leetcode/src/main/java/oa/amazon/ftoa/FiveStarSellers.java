@@ -2,6 +2,10 @@ package oa.amazon.ftoa;
 
 import org.junit.Test;
 
+/**
+ * time O(n)
+ * space O(1)
+ */
 public class FiveStarSellers {
     public static int fiveStarReviews(int[][] productRatings, int ratingsThreshold) {
         int n = productRatings.length;

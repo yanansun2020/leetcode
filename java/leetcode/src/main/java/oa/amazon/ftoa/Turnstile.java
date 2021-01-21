@@ -4,6 +4,10 @@ import org.junit.Test;
 
 import java.util.PriorityQueue;
 
+/**
+ * time O(n*logn)
+ * space O(n)
+ */
 public class Turnstile {
     int processTime = -1;
     int preDirection = -1;// 0: enter, 1: exit

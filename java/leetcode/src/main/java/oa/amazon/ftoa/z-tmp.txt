@@ -1,1 +1,5 @@
-{{2147483647,-1,0,2147483647},{2147483647,2147483647,2147483647,-1},{2147483647,-1,2147483647,-1},{0,-1,2147483647,2147483647}}
+ {{apple, apple}, {banana, anything, banana}}
+
+{orange, apple, apple, banana, orange, banana]
+
+{banana, orange, banana, apple, apple}
