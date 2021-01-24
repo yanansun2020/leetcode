@@ -23,8 +23,10 @@ public class ATest2 {
     }
     @Test
     public void test(){
-        Integer[] nums = new Integer[]{1, 2, 3,3,5};
-        List<Integer> ss = Arrays.asList(nums);
-        int s = binSearch(ss, 3);
+        String  s = "ab";
+        String s1 = s.substring(1,1);
+//        Integer[] nums = new Integer[]{1, 2, 3,3,5};
+//        List<Integer> ss = Arrays.asList(nums);
+//        int s = binSearch(ss, 3);
     }
 }
