@@ -1,5 +1,7 @@
 package algorithm.graph;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -7,6 +9,15 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
+/**
+ *
+ * topological sort
+ * idea: stack + set
+ * (1) add any vertex to the set
+ * (2) explore(dfs) that vertex, until a node will no children
+ * (3) put the last node into the stack
+ *
+ */
 public class TopologicalSort {
     /**
      * n: number of nodes
@@ -39,5 +50,11 @@ public class TopologicalSort {
             dfs(neighbor, visited, stack, adjacentList);
         }
         stack.add(cur);
+    }
+
+    @Test
+    public void test() {
+        char a = 1 + 'a';
+        System.out.print(a);
     }
 }
