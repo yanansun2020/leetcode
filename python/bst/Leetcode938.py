@@ -13,10 +13,11 @@ class Solution:
             return left_val + right_val + root.val
 
 def main():
-    sol = Solution()
-    root = TreeNode(10, TreeNode(5, TreeNode(3, None, None), TreeNode(7, None, None)), TreeNode(15, None, TreeNode(18, None, None)))
-    result = sol.rangeSumBST(root, 3, 5)
-    print(result)
+    # sol = Solution()
+    # root = TreeNode(10, TreeNode(5, TreeNode(3, None, None), TreeNode(7, None, None)), TreeNode(15, None, TreeNode(18, None, None)))
+    # result = sol.rangeSumBST(root, 3, 5)
+    # print(result)
+    print(-4/3)
 
 if __name__ == "__main__":
     main()

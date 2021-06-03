@@ -84,7 +84,7 @@ class Solution:
 
 def main():
     sol = Solution()
-    result = sol.searchRange([5,7,7,8,8,10], 8)
+    result = sol.searchRange([5,7,7,8,8,10], 11)
     print(result)
     result = sol.searchRange([0, 1, 1, 4], 1)
     print(result)
