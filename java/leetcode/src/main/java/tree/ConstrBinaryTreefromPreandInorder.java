@@ -40,8 +40,8 @@ public class ConstrBinaryTreefromPreandInorder {
     }
     @Test
     public void test(){
-        int[] preorder = new int[]{1,2};
-        int[] inorder = new int[]{2,1};
+        int[] preorder = new int[]{3, 9, 20, 15, 7};
+        int[] inorder = new int[]{9, 3, 16, 20, 7};
         TreeNode node = buildTree(preorder, inorder);
     }
 }

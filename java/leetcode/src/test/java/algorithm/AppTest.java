@@ -1,4 +1,4 @@
-package algorithm;
+package java.algorithm;
 
 import org.junit.Test;
 
@@ -13,6 +13,14 @@ class AppTest {
      */
     @Test
     void testApp() {
+        assertEquals(1, 1);
+    }
+
+      /**
+     * Rigorous Test.
+     */
+    @Test
+    void testApp1() {
         assertEquals(1, 1);
     }
 }
