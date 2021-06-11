@@ -1,25 +1,22 @@
 package algorithm.sort;
 
-import org.junit.Test;
-
-/**
- * idea: find a pivot, all the find all elements less than it and all elements greater than it
- * time complexity:
- * worst : O(N2)
- * best: O(NlogN)
- */
-public class QuickSort {
-    public void quickSort(int[] arr){
-        quickSort(arr, 0, arr.length);
+public class QuickSelect {
+    public int quickSelect(int[] arr, int k){
+        int index = quickSelect(arr, 0, arr.length, k);
+        return arr[index];
     }
 
-    void quickSort(int[] arr, int left, int right){
-        if (left >= right) {
-            return;
+    int quickSelect(int[] arr, int left, int right, int k){
+        if (left == right) {
+            return left;
         }
         int index = partition(left, right, arr);
-        quickSort(arr, left, index);
-        quickSort(arr, index + 1, right);
+        if (k < index) {
+            return quickSelect(arr, left, index, k);
+        } else if (k > index){
+            return quickSelect(arr, index + 1, right, k);
+        }
+        return index;
     }
 
     private int partition(int left, int right, int[] arr) {
@@ -56,8 +53,8 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        QuickSort quickSort = new QuickSort();
-        int[] arr = new int[]{3,2,1,1, 5,6,4, 3, 5,7, 3, 8};
-        quickSort.quickSort(arr);
+        QuickSelect quickSort = new QuickSelect();
+        int[] arr = new int[]{2, 3,1, 1};
+        int a = quickSort.quickSelect(arr, 2);
     }
 }
