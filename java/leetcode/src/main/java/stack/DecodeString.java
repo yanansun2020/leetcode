@@ -41,7 +41,8 @@ public class DecodeString {
         if (!stack.isEmpty()) {
             times = Integer.parseInt(stack.pop());
         }
-        s = s.repeat(times);
+        //remove tentatively, java8 not support
+        //s = s.repeat(times);
         return s;
     }
 }

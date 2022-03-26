@@ -12,8 +12,7 @@ import java.util.Vector;
  * 4) Concatenate all sorted buckets.
  */
 public class BucketSort {
-    static void bucketSort(float arr[], int n)
-    {
+    static void bucketSort(float arr[], int n) {
         if (n <= 0)
             return;
 
@@ -42,6 +41,21 @@ public class BucketSort {
             for (int j = 0; j < buckets[i].size(); j++) {
                 arr[index++] = buckets[i].get(j);
             }
+        }
+    }
+
+    public static void main(String args[])
+    {
+        float arr[] = { (float)0.897, (float)0.565,
+            (float)0.656, (float)0.1234,
+            (float)0.665, (float)0.3434 };
+
+        int n = arr.length;
+        bucketSort(arr, n);
+
+        System.out.println("Sorted array is ");
+        for (float el : arr) {
+            System.out.print(el + " ");
         }
     }
 }

@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  * 位置应该在 N，那么他现在的位置就可能在 N到N + K的范围内。
  * 要求将这个数组再排序。我的解法是用一个K capacity的priorityQueue就可以了。
  */
-public class VariantSort {
+public class KSort {
     private static void kSort(int[] arr, int n, int k)
     {
  
