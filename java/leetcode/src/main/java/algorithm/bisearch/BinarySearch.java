@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class BinarySearch {
     /**
      * [1, 5, 7] 3 => return index 0
+     *
      * @param list
      * @param target
      * @return the left side boundry
