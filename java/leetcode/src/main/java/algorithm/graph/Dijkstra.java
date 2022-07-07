@@ -1,5 +1,7 @@
 package algorithm.graph;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,5 +51,63 @@ public class Dijkstra {
             map.get(edge[0]).add(new int[]{edge[1], edge[2]});
         }
         return map;
+    }
+
+
+    public int[] dijkstra(int[][] graph, int src) {
+        int v = graph.length;//get number of vertex
+        int[] distance = new int[v];
+        int[] visited = new int[v];
+        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2)->o1[1] - o2[1]); //[vertex, distance]
+        //init disatnce
+        for (int i = 0; i < v; i++) {
+            if (i != src) distance[i] = Integer.MAX_VALUE;
+        }
+        //init neighbors
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        initNeighbors(graph, map);
+
+        //init queue
+        queue.offer(new int[]{src, 0});
+        while (!queue.isEmpty()) {
+            int[] node =  queue.poll();
+            int vertex = node[0];
+            int d = node[1];
+            visited[vertex] = 1;
+            List<Integer> neis = map.get(vertex);
+            if (neis == null || neis.size() == 0) {
+                continue;
+            }
+            for (int nei : neis) {
+                if (visited[nei] == 1) {
+                    continue;
+                }
+                int min_dis = Math.min(distance[nei], d + graph[vertex][nei]);
+                distance[nei] = min_dis;
+                queue.offer(new int[]{nei,min_dis});
+            }
+
+        }
+        return distance;
+
+    }
+
+    private void initNeighbors(int[][] g, Map<Integer, List<Integer>> map) {
+        for (int i = 0; i < g.length; i++) {
+            for (int j = 0; j < g[0].length; j++) {
+                if (g[i][j] < Integer.MAX_VALUE) {
+                    List<Integer> tmp = map.getOrDefault(i, new ArrayList<>());
+                    tmp.add(j);
+                    map.put(i, tmp);
+                }
+            }
+        }
+    }
+
+    @Test
+    public void test() {
+        int[][] graph = new int[][]{{0, 1,4}, {Integer.MAX_VALUE, 0, 1}, {Integer.MAX_VALUE, Integer.MAX_VALUE, 0}};
+        int[] dis = dijkstra(graph, 0);
+        System.out.println(dis);
     }
 }
