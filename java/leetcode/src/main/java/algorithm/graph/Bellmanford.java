@@ -11,25 +11,26 @@ public class Bellmanford {
     Integer[] parent = null;
     Integer vertices = null;
 
-    public Bellmanford(int size, int startPoint){
+    public Bellmanford(int size, int src){
         distance = new Integer[size];
         parent = new Integer[size];;
         vertices = size;
         for(int i =0; i < size; i++){
             distance[i] = Integer.MAX_VALUE;
         }
-        distance[startPoint] = 0;
+        distance[src] = 0;
     }
 
-    public void relax(int start, int end, int weight){
-        if(distance[start] == Integer.MAX_VALUE){
+    public void relax(int src, int dest, int weight){
+        if(distance[src] == Integer.MAX_VALUE){
             return;
         }
-        if(distance[end]> distance[start] + weight){
-            distance[end] = distance[start] + weight;
-            parent[end] = start;
+        if(distance[dest]> distance[src] + weight){
+            distance[dest] = distance[src] + weight;
+            parent[dest] = src;//record the shortest path
         }
     }
+
     List<Integer> getShortestPath(Integer end){
         List<Integer> shortestPath = new ArrayList<>();
         while( end!= null){
@@ -38,4 +39,15 @@ public class Bellmanford {
         }
         return shortestPath;
     }
+    //n is number of vertex
+    public void bellmanford(Edge[] edges, int n) {
+        for (int i = 0; i < n - 1; i++) {
+            for (Edge e : edges) {
+                relax(Integer.parseInt(e.src), Integer.parseInt(e.dest), e.weight);
+            }
+        }
+    }
+
 }
+
+

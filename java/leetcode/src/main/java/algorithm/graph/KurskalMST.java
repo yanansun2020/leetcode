@@ -14,15 +14,15 @@ public class KurskalMST {
         Map<String, Integer> vertexMap = new HashMap<>();
         int index = 0;
         for(Edge connection : connections){
-            if (!vertexMap.containsKey(connection.start)) vertexMap.put(connection.start, index++);
-            if (!vertexMap.containsKey(connection.end)) vertexMap.put(connection.end, index++);
+            if (!vertexMap.containsKey(connection.src)) vertexMap.put(connection.src, index++);
+            if (!vertexMap.containsKey(connection.dest)) vertexMap.put(connection.dest, index++);
         }
         Collections.sort(connections, (c1, c2)->c1.weight-c2.weight);
         List<Edge> ans = new ArrayList<>();
         DisjointSet disjointSet = new DisjointSet(vertexMap.size());
         for(Edge edge : connections){
-            int start = vertexMap.get(edge.start);
-            int end = vertexMap.get(edge.end);
+            int start = vertexMap.get(edge.src);
+            int end = vertexMap.get(edge.dest);
             if(disjointSet.union(start, end)){
                 ans.add(edge);
             }

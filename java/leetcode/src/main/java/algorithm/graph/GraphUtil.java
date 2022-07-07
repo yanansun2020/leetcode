@@ -10,14 +10,14 @@ public class GraphUtil {
         Map<String, List<Vertex> > vertexListMap = new HashMap<>();
         for (Edge edge : edges) {
             Vertex end_vertex = new Vertex();
-            end_vertex.name = edge.end;
+            end_vertex.name = edge.dest;
             end_vertex.distance = edge.weight;
-            List<Vertex> adjancent = vertexListMap.get(edge.start);
+            List<Vertex> adjancent = vertexListMap.get(edge.src);
             if (adjancent == null) {
                 adjancent = new ArrayList<>();
             }
             adjancent.add(end_vertex);
-            vertexListMap.put(edge.start, adjancent);
+            vertexListMap.put(edge.src, adjancent);
         }
         return vertexListMap;
     }

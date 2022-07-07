@@ -2,12 +2,12 @@ package algorithm.graph;
 
 public class Edge {
     int weight;
-    String start;
-    String end;
+    String src;
+    String dest;
     Edge(){}
-    Edge(String start, String end, int weight){
-        this.start = start;
-        this.end = end;
+    Edge(String start, String dest, int weight){
+        this.src = start;
+        this.dest = dest;
         this.weight = weight;
     }
 }

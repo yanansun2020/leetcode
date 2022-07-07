@@ -16,8 +16,8 @@ public class ShortestPath {
         Map<String, Integer> vertexMap = new HashMap<>();
         Map<Integer, String> vertexIntMap = new HashMap<>();
         for(Edge connection : connections){
-            if (!vertexMap.containsKey(connection.start)) vertexMap.put(connection.start, index++);
-            if (!vertexMap.containsKey(connection.end)) vertexMap.put(connection.end, index++);
+            if (!vertexMap.containsKey(connection.src)) vertexMap.put(connection.src, index++);
+            if (!vertexMap.containsKey(connection.dest)) vertexMap.put(connection.dest, index++);
         }
         for(Map.Entry<String, Integer> entry : vertexMap.entrySet()){
             vertexIntMap.put(entry.getValue(), entry.getKey());
@@ -25,8 +25,8 @@ public class ShortestPath {
         Bellmanford bellmanford = new Bellmanford(vertexMap.size(), vertexMap.get(start));
         for(int i =0; i < vertexMap.size()-1; i++){
             for(Edge edge:connections){
-                int startPoint = vertexMap.get(edge.start);
-                int endPoint = vertexMap.get(edge.end);
+                int startPoint = vertexMap.get(edge.src);
+                int endPoint = vertexMap.get(edge.dest);
                 bellmanford.relax(startPoint, endPoint, edge.weight);
             }
         }
