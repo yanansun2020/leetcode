@@ -88,7 +88,7 @@ bleach==3.3.0
 certifi==2019.11.28
 cffi==1.14.0
 chardet==3.0.4
-cryptography==3.3.2
+cryptography==39.0.1
 decorator==4.4.2
 defusedxml==0.6.0
 -e git+https://github.com/pyenv/pyenv.git@7097f8204e26c63a6ae9699255caa75e7c3ef084#egg=Django
